@@ -56,9 +56,9 @@ namespace CarManufacturer
 
         public void Drive(double distance)
         {
-            double neededFuel = distance * FuelConsumption;
+            double neededFuel = distance * FuelConsumption / 100;
 
-            if (neededFuel < FuelQuantity)
+            if (neededFuel <= FuelQuantity)
             {
                 FuelQuantity -= neededFuel;
             }
@@ -80,6 +80,19 @@ namespace CarManufacturer
 
             return result.ToString();
 
+        }
+
+        public string PrintSpecialCar()
+        {
+            StringBuilder result = new StringBuilder();
+
+            result.AppendLine($"Make: {this.Make}");
+            result.AppendLine($"Model: {this.Model}");
+            result.AppendLine($"Year: {this.Year}");
+            result.AppendLine($"HorsePowers: {this.Engine.HorsePower}");
+            result.AppendLine($"FuelQuantity: {this.FuelQuantity}");
+
+            return result.ToString();
         }
     }
 }
